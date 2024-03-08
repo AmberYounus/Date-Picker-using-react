@@ -1,4 +1,5 @@
 import {
+  addMonths,
   eachDayOfInterval,
   endOfMonth,
   endOfWeek,
@@ -26,10 +27,18 @@ function DatePickerModal({ value, onChange }) {
     start: startOfWeek(startOfMonth(visibleMonth)),
     end: endOfWeek(endOfMonth(visibleMonth)),
   });
-
-  function showPreviousMonth() {}
-
-  function showNextMonth() {}
+  //Show Previous MOnth 
+  function showPreviousMonth() {
+  setVisibleMonth(currentMonth => {
+    return addMonths(currentMonth, -1);
+  });
+  }
+  //Show Next MOnth 
+  function showNextMonth() {
+    setVisibleMonth(currentMonth => {
+      return addMonths(currentMonth, +1);
+    });
+  }
 }
 return (
   <div className="date-picker">
@@ -38,6 +47,15 @@ return (
     </div>
     <div>{format(visibleMonth, "MMMM -yyyy")}</div>
     <button onClick={showNextMonth}>&rarr;</button>
+    <div>
+      <div>Mon</div>
+      <div>Tues</div>
+      <div>wed</div>
+      <div>Thurs</div>
+      <div>Frid</div>
+      <div>Sat</div>
+      <div>SUn</div>
+    </div>
   </div>
 );
 export default DatePicker;
