@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   addMonths,
   eachDayOfInterval,
@@ -7,7 +8,6 @@ import {
   startOfMonth,
   startOfWeek,
 } from "date-fns";
-import { useState } from "react";
 
 function DatePicker({ value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +20,7 @@ function DatePicker({ value, onChange }) {
     </div>
   );
 }
+
 function DatePickerModal({ value, onChange }) {
   const [visibleMonth, setVisibleMonth] = useState(value || new Date());
 
@@ -27,20 +28,23 @@ function DatePickerModal({ value, onChange }) {
     start: startOfWeek(startOfMonth(visibleMonth)),
     end: endOfWeek(endOfMonth(visibleMonth)),
   });
+
   //Show Previous MOnth 
   function showPreviousMonth() {
   setVisibleMonth(currentMonth => {
     return addMonths(currentMonth, -1);
   });
   }
+
   //Show Next MOnth 
   function showNextMonth() {
     setVisibleMonth(currentMonth => {
       return addMonths(currentMonth, +1);
     });
   }
-}
+
 return (
+ <>
   <div className="date-picker">
     <div className="header">
       <button onClick={showPreviousMonth}>&larr;</button>
@@ -52,10 +56,17 @@ return (
       <div>Tues</div>
       <div>wed</div>
       <div>Thurs</div>
-      <div>Frid</div>
+      <div>Fri</div>
       <div>Sat</div>
-      <div>SUn</div>
+      <div>Sun</div>
     </div>
-  </div>
+    <div>
+      {visibleDates.map(date=>(
+        <button onClick={()=>onChange(date)} className="" key={date.toDataString()}>{date.getDate()}</button>
+      ))}
+        </div>
+        </div>
+        </>
 );
+      }
 export default DatePicker;
