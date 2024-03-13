@@ -12,7 +12,7 @@ import {
   startOfWeek,
 } from "date-fns";
 
-function DatePicker({ value, onChange }) {
+export function DatePicker({ value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="container">
@@ -81,4 +81,4 @@ function DatePickerModal({ value, onChange }) {
     </>
   );
 }
-export default DatePicker;
+
