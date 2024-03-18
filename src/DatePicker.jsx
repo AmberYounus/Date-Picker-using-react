@@ -16,8 +16,8 @@ export function DatePicker({ value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="container">
-      <button>
-        {value == "null" ? "Select a Date" : format(value, "MM do,yyy")}
+      <button className="date-picker-button" onClick={()=> setIsOpen(o=>!o)}>
+        {value == "null" ? "Select a Date" : format(value, "MMM dd,yyyy")}
       </button>
       {isOpen && <DatePickerModal value={value} onChange={onChange} />}
     </div>
@@ -42,7 +42,7 @@ function DatePickerModal({ value, onChange }) {
   //Show Next MOnth
   function showNextMonth() {
     setVisibleMonth((currentMonth) => {
-      return addMonths(currentMonth, +1);
+      return addMonths(currentMonth, 1);
     });
   }
 
