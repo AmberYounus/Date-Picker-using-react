@@ -17,7 +17,7 @@ export function DatePicker({ value, onChange }) {
   return (
     <div className="container">
       <button className="date-picker-button" onClick={()=> setIsOpen(o=>!o)}>
-        {value == "null" ? "Select a Date" : format(value, "MMM dd,yyyy")}
+        {value === "null" ? "Select a Date" : format(value, "MMM dd,yyyy")}
       </button>
       {isOpen && <DatePickerModal value={value} onChange={onChange} />}
     </div>
@@ -52,26 +52,26 @@ function DatePickerModal({ value, onChange }) {
         <div className="header">
           <button onClick={showPreviousMonth}>&larr;</button>
         </div>
-        <div>{format(visibleMonth, "MMMM -yyyy")}</div>
+        <div>{format(visibleMonth, "MMMM - yyyy")}</div>
         <button onClick={showNextMonth}>&rarr;</button>
         <div>
+          <div>Sat</div>
+          <div>Sun</div>
           <div>Mon</div>
           <div>Tues</div>
           <div>wed</div>
           <div>Thurs</div>
           <div>Fri</div>
-          <div>Sat</div>
-          <div>Sun</div>
         </div>
         <div>
-          {visibleDates.map((date) => (
+          {visibleDates.map(date => (
             <button
               onClick={() => onChange(date)}
               className={`date ${
                   !isSameMonth(date, visibleMonth) && "date-picker-other-month-date"}
                   ${isSameDay(date, value) && "selected"}
-                  ${isToday(date) && "today"}
-              }`}
+                  ${isToday(date) && "today"}`
+                }
               key={date.toDataString()} >
               {date.getDate()}
             </button>
