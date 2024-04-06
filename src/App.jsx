@@ -5,8 +5,11 @@ import { DatePicker } from "./DatePicker";
 function App() {
   const [value, setValue] = useState();
   return(
-  <DatePicker value={value} onChange={setValue}/>
+  <DatePicker 
+
+  onChange={setValue}  value={value} />
   )
 }
+//onChange={setValue}
 
 export default App;

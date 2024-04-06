@@ -5,6 +5,7 @@ import {
   endOfMonth,
   endOfWeek,
   format,
+  getDate,
   isSameDay,
   isSameMonth,
   isToday,
@@ -65,6 +66,7 @@ function DatePickerModal({ value, onChange }) {
         </div>
         <div>
           {visibleDates.map(date => (
+       
             <button
               onClick={() => onChange(date)}
               className={`date ${
@@ -81,4 +83,5 @@ function DatePickerModal({ value, onChange }) {
     </>
   );
 }
+console.log(toDataString)
 
